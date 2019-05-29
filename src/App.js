@@ -4,7 +4,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      //
+      task: '',
+      id: 0,
+      completed: false
     };
   }
   // you will need a place to store your state in this component.
