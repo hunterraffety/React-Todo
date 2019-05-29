@@ -5,8 +5,12 @@ const TodoForm = () => {
     <div className='formContainer'>
       <form>
         <input type='text' placeholder='Todo Goes Here...' />
-        <button>Add Todo</button>
-        <button>Clear Completed</button>
+        <button className='add' name='add'>
+          Add Todo
+        </button>
+        <button className='clear' name='clearCompleted'>
+          Clear Completed
+        </button>
       </form>
     </div>
   );

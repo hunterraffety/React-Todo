@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Todo = props => {
-  return (
-    <ul>
-      <li>Todo Item</li>
-    </ul>
-  );
-};
+class Todo extends React.Component {
+  render() {
+    return (
+      <ul className='tasks'>
+        <li className='taskItem'>Todo Item</li>
+      </ul>
+    );
+  }
+}
 
 export default Todo;
