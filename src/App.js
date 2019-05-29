@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       taskList: [
         {
-          task: 'Clean the kitchen',
+          task: 'Clean theadsdasasdasdasd kitchen',
           id: 2329302340,
           completed: false
         },
@@ -42,7 +42,9 @@ class App extends React.Component {
   };
 
   handleChanges = e => {
-    console.log(e.target);
+    this.setState({
+      task: e.target.value
+    });
   };
 
   render() {
@@ -56,7 +58,7 @@ class App extends React.Component {
             ))}
           </ul>
         </div>
-        <TodoForm />
+        <TodoForm addToArr={this.addTodo} addTaskItem={this.handleChanges} />
       </div>
     );
   }
