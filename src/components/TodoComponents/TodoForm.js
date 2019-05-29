@@ -9,12 +9,11 @@ class TodoForm extends React.Component {
             type='text'
             placeholder='Todo Goes Here...'
             onChange={this.props.addTaskItem}
-            id={Date.now()}
             completed='false'
           />
           <button>Add Todo</button>
-          <button>Clear Completed</button>
         </form>
+        <button>Clear Completed</button>
       </div>
     );
   }
