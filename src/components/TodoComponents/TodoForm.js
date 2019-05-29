@@ -4,8 +4,12 @@ class TodoForm extends React.Component {
   render() {
     return (
       <div className='formContainer'>
-        <form>
-          <input type='text' placeholder='Todo Goes Here...' />
+        <form onSubmit={this.addTodo}>
+          <input
+            type='text'
+            placeholder='Todo Goes Here...'
+            onChange={this.handleChanges}
+          />
           <button className='add' name='add'>
             Add Todo
           </button>

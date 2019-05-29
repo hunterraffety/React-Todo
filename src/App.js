@@ -7,7 +7,18 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      taskList: [{}],
+      taskList: [
+        {
+          task: 'Clean the kitchen',
+          id: 2329302340,
+          completed: false
+        },
+        {
+          task: 'Walk the dog',
+          id: 94904094,
+          completed: true
+        }
+      ],
       task: null,
       id: null,
       completed: null
@@ -30,10 +41,21 @@ class App extends React.Component {
     });
   };
 
+  handleChanges = e => {
+    console.log(e.target);
+  };
+
   render() {
     return (
       <div className='container'>
-        <TodoList />
+        <div className='itemListDisplay'>
+          <h1>Your todo list:</h1>
+          <ul className='tasks'>
+            {this.state.taskList.map(taskFromMap => (
+              <TodoList taskOnProps={taskFromMap} />
+            ))}
+          </ul>
+        </div>
         <TodoForm />
       </div>
     );

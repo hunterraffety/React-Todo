@@ -4,8 +4,7 @@ class TodoList extends React.Component {
   render() {
     return (
       <div className='TodoList'>
-        <h1>Your todo list:</h1>
-        <Todo />
+        <Todo taskOnProps={this.props.taskOnProps} />
       </div>
     );
   }

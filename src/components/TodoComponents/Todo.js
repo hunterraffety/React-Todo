@@ -3,9 +3,10 @@ import React from 'react';
 class Todo extends React.Component {
   render() {
     return (
-      <ul className='tasks'>
-        <li className='taskItem'>Todo Item</li>
-      </ul>
+      <li className='taskItem'>
+        {this.props.taskOnProps.task} | {this.props.taskOnProps.id} |
+        {this.props.taskOnProps.completed}
+      </li>
     );
   }
 }
