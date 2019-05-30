@@ -44,6 +44,14 @@ class App extends React.Component {
     });
   };
 
+  clearTasks = e => {
+    e.preventDefault();
+    console.log(e);
+    this.setState({
+      taskList: this.state.taskList.filter(task => !task.completed)
+    });
+  };
+
   // markToComplete = e => {
   //   e.preventDefault();
   //   const markCompleted = {
@@ -70,6 +78,7 @@ class App extends React.Component {
         <TodoList
           taskItems={this.state.taskList}
           toggleTask={this.toggleTask}
+          clearTasks={this.clearTasks}
         />
       </div>
     );

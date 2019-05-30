@@ -22,11 +22,13 @@ class TodoForm extends React.Component {
     });
   };
 
-  clearTasks = e => {
-    e.preventDefault();
-    console.log(e);
-    // this.props.clearTasks(this.state.taskName);
-  };
+  // clearTasks = e => {
+  //   e.preventDefault();
+  //   console.log(e);
+  //   this.setState({
+  //     taskList: this.state.taskList.filter(task => !task.completed)
+  //   });
+  // };
 
   render() {
     return (
@@ -38,9 +40,8 @@ class TodoForm extends React.Component {
             placeholder='Todo Goes Here...'
             onChange={this.handleChanges}
           />
-          <button name='addTask'>Add Todo</button>
-          <button name='clearTasks' onClick={this.clearTasks}>
-            Clear Completed
+          <button className='addTask' name='addTask'>
+            Add Todo
           </button>
         </form>
       </div>
