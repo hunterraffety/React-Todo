@@ -6,12 +6,12 @@ import './components/TodoComponents/Todo.css';
 // array for initial state
 const taskList = [
   {
-    task: 'Clean the kitchen',
+    taskName: 'Clean the kitchen',
     id: 2329302340,
     completed: false
   },
   {
-    task: 'Walk the dog',
+    taskName: 'Walk the dog',
     id: 94904094,
     completed: false
   }
@@ -27,7 +27,7 @@ class App extends React.Component {
 
   toggleTask = id => {
     this.setState(prevState => {
-      return (
+      return {
         taskList: prevState.taskList.map(task => {
           if (task.id === id) {
             return {
@@ -38,19 +38,20 @@ class App extends React.Component {
             return task;
           }
         })
-      );
-  });
+      };
+    });
   };
 
-  addTaskItem = taskItem => {
-    e.preventDefault();
-    const taskItem = {
-      task: taskName,
+  addTask = taskName => {
+    const newTask = {
+      taskName: taskName,
       id: Date.now(),
       completed: false
     };
-    this.setState({
-      taskList: [...prevState.taskList, newTaskItem]
+    this.setState(prevState => {
+      return {
+        taskList: [...prevState.taskList, newTask]
+      };
     });
   };
 
@@ -64,20 +65,20 @@ class App extends React.Component {
   //   });
   // };
 
-  handleChanges = e => {
-    this.setState({
-      task: e.target.value
-    });
-  };
+  // handleChanges = e => {
+  //   this.setState({
+  //     task: e.target.value
+  //   });
+  // };
 
   render() {
     return (
       <div className='container'>
         <div className='title'>
           <h1>Your Task List</h1>
-          <TodoForm addTask={this.addTaskItem} />
+          <TodoForm addTask={this.addTask} />
         </div>
-        <TaskList
+        <TodoList
           taskItems={this.state.taskList}
           toggleTask={this.toggleTask}
         />
