@@ -22,6 +22,11 @@ class TodoForm extends React.Component {
     });
   };
 
+  clearTasks = e => {
+    e.preventDefault();
+    this.props.clearTasks(this.state.taskName);
+  };
+
   render() {
     return (
       <div className='formContainer'>
