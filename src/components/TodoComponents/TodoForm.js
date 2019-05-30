@@ -12,6 +12,7 @@ class TodoForm extends React.Component {
             completed='false'
           />
           <button>Add Todo</button>
+          <button onClick={this.props.mark}>Mark Complete</button>
         </form>
         <button>Clear Completed</button>
       </div>

@@ -9,19 +9,19 @@ class App extends React.Component {
     this.state = {
       taskList: [
         {
-          task: 'Clean theadsdasasdasdasd kitchen',
+          task: 'Clean the kitchen',
           id: 2329302340,
-          completed: false
+          completed: 'false'
         },
         {
           task: 'Walk the dog',
           id: 94904094,
-          completed: true
+          completed: 'false'
         }
       ],
-      task: null,
+      task: '',
       id: null,
-      completed: null
+      completed: ''
     };
   }
 
@@ -34,10 +34,20 @@ class App extends React.Component {
     const newTodo = {
       task: this.state.task,
       id: Date.now(),
-      completed: this.state.completed
+      completed: false
     };
     this.setState({
       taskList: [...this.state.taskList, newTodo]
+    });
+  };
+
+  markToComplete = e => {
+    e.preventDefault();
+    const markCompleted = {
+      completed: 'true'
+    };
+    this.setState({
+      taskList: [...this.state.taskList, markCompleted]
     });
   };
 
@@ -58,7 +68,11 @@ class App extends React.Component {
             ))}
           </ul>
         </div>
-        <TodoForm addToArr={this.addTodo} addTaskItem={this.handleChanges} />
+        <TodoForm
+          addToArr={this.addTodo}
+          addTaskItem={this.handleChanges}
+          mark={this.markToComplete}
+        />
       </div>
     );
   }
