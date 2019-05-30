@@ -4,18 +4,7 @@ import TodoList from './components/TodoComponents/TodoList';
 import './components/TodoComponents/Todo.css';
 
 // array for initial state
-const taskList = [
-  {
-    taskName: 'Clean the kitchen',
-    id: 2329302340,
-    completed: false
-  },
-  {
-    taskName: 'Walk the dog',
-    id: 94904094,
-    completed: false
-  }
-];
+const taskList = [];
 
 class App extends React.Component {
   constructor() {
