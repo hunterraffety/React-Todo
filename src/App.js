@@ -3,49 +3,66 @@ import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 import './components/TodoComponents/Todo.css';
 
+// array for initial state
+const taskList = [
+  {
+    task: 'Clean the kitchen',
+    id: 2329302340,
+    completed: false
+  },
+  {
+    task: 'Walk the dog',
+    id: 94904094,
+    completed: false
+  }
+];
+
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      taskList: [
-        {
-          task: 'Clean the kitchen',
-          id: 2329302340,
-          completed: 'false'
-        },
-        {
-          task: 'Walk the dog',
-          id: 94904094,
-          completed: 'false'
-        }
-      ],
-      task: '',
-      id: null,
-      completed: ''
+      taskList
     };
   }
 
-  addTodo = e => {
+  toggleTask = id => {
+    this.setState(prevState => {
+      return (
+        taskList: prevState.taskList.map(task => {
+          if (task.id === id) {
+            return {
+              ...task,
+              completed: !task.completed
+            };
+          } else {
+            return task;
+          }
+        })
+      );
+  });
+  };
+
+  addTaskItem = taskItem => {
     e.preventDefault();
-    const newTodo = {
-      task: this.state.task,
+    const taskItem = {
+      task: taskName,
       id: Date.now(),
       completed: false
     };
     this.setState({
-      taskList: [...this.state.taskList, newTodo]
+      taskList: [...prevState.taskList, newTaskItem]
     });
   };
 
-  markToComplete = e => {
-    e.preventDefault();
-    const markCompleted = {
-      completed: 'true'
-    };
-    this.setState({
-      taskList: [...this.state.taskList, markCompleted]
-    });
-  };
+  // markToComplete = e => {
+  //   e.preventDefault();
+  //   const markCompleted = {
+  //     completed: 'true'
+  //   };
+  //   this.setState({
+  //     taskList: [...this.state.taskList, markCompleted]
+  //   });
+  // };
 
   handleChanges = e => {
     this.setState({
@@ -56,6 +73,22 @@ class App extends React.Component {
   render() {
     return (
       <div className='container'>
+        <div className='title'>
+          <h1>Your Task List</h1>
+          <TodoForm addTask={this.addTaskItem} />
+        </div>
+        <TaskList
+          taskItems={this.state.taskList}
+          toggleTask={this.toggleTask}
+        />
+      </div>
+    );
+  }
+}
+
+export default App;
+
+/*
         <div className='itemListDisplay'>
           <h1>Your todo list:</h1>
           <ul className='tasks'>
@@ -69,9 +102,4 @@ class App extends React.Component {
           addTaskItem={this.handleChanges}
           mark={this.markToComplete}
         />
-      </div>
-    );
-  }
-}
-
-export default App;
+        */
